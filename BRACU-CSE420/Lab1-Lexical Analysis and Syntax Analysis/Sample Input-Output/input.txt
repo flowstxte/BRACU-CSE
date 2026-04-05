@@ -1,0 +1,21 @@
+int bar(int a)
+{
+    return a;
+}
+
+int main()
+{
+    a = 56;
+    if(a%2 == 0)
+    {
+        printf(a);
+    }
+    else if (a%2 == 1)
+    {
+        printf(a);
+    }
+    else
+    {
+        printf(a);
+    }
+}

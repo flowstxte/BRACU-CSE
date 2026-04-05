@@ -1,0 +1,189 @@
+/* Project modified by M. Shafiul Alam
+Added Insertion and Deletion Operation + Redesigned UI
+Original project was created by Faisal Bin Ashraf Sir */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Fredoka", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  background-image: url("../img/background.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+header {
+  padding: 0 10vh;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.nav_logo h1 a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.7rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.nav_link {
+  display: flex;
+  list-style: none;
+}
+
+.nav_link li {
+  padding: 0 15px;
+}
+
+.nav_link a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.nav_link a:hover {
+  color: #ccc;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90%;
+  width: 100%;
+}
+
+.login_box,
+.add_student_box {
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login_box h1,
+.add_student_box h1 {
+  color: black;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.login_form,
+.add_student_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login_form input[type="text"],
+.login_form input[type="password"],
+.login_form input[type="submit"],
+.add_student_form input[type="text"] {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.login_form input[type="submit"],
+.add_student_form input[type="submit"] {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 16px;
+}
+
+.login_form input[type="submit"]:hover,
+.add_student_form input[type="submit"]:hover {
+  background-color: rgb(26, 26, 26);
+}
+
+.students {
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.students h1 {
+  color: black;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.student_table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.student_table th,
+.student_table td {
+  padding: 15px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.student_table th {
+  background-color: #f2f2f2;
+  color: black;
+  font-weight: 400;
+}
+
+.student_table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.student_table tr:hover {
+  background-color: #ddd;
+  cursor: default;
+}
+
+.btn {
+  background: #ffffff;
+  border-radius: 6px;
+  color: #000000;
+  font-size: 14.5px;
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 10px 0px;
+  float: right;
+  padding: 10px;
+}
+
+.btn:hover {
+  background: #f5f5f5;
+  text-decoration: none;
+}

@@ -1,0 +1,80 @@
+CREATE DATABASE IF NOT EXISTS quote_diary;
+USE quote_diary;
+
+-- Users Table
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    profile_picture VARCHAR(255) DEFAULT 'media/assets/default-avatar.png',
+    date_joined DATETIME DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_username (username),
+    INDEX idx_email (email)
+);
+
+-- Quotes Table
+CREATE TABLE quotes (
+    quote_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    quote_text TEXT NOT NULL,
+    author_name VARCHAR(100) DEFAULT 'self',
+    category VARCHAR(50),
+    mood VARCHAR(50),
+    date_added DATETIME DEFAULT CURRENT_TIMESTAMP,
+    likes_count INT DEFAULT 0,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    INDEX idx_user (user_id),
+    INDEX idx_category (category),
+    INDEX idx_date (date_added)
+);
+
+-- Media Table
+CREATE TABLE media (
+    media_id INT AUTO_INCREMENT PRIMARY KEY,
+    quote_id INT NOT NULL,
+    media_url VARCHAR(255) NOT NULL,
+    media_type VARCHAR(20) DEFAULT 'image',
+    upload_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (quote_id) REFERENCES quotes(quote_id) ON DELETE CASCADE,
+    INDEX idx_quote (quote_id)
+);
+
+-- Favorites Table
+CREATE TABLE favorites (
+    fav_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    quote_id INT NOT NULL,
+    date_favorited DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (quote_id) REFERENCES quotes(quote_id) ON DELETE CASCADE,
+    UNIQUE KEY unique_favorite (user_id, quote_id),
+    INDEX idx_user (user_id),
+    INDEX idx_quote (quote_id)
+);
+
+-- Comments Table
+CREATE TABLE comments (
+    comment_id INT AUTO_INCREMENT PRIMARY KEY,
+    quote_id INT NOT NULL,
+    user_id INT NOT NULL,
+    comment_text TEXT NOT NULL,
+    date_commented DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (quote_id) REFERENCES quotes(quote_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    INDEX idx_quote (quote_id),
+    INDEX idx_user (user_id)
+);
+
+-- Likes Table (for tracking likes)
+CREATE TABLE likes (
+    like_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    quote_id INT NOT NULL,
+    date_liked DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (quote_id) REFERENCES quotes(quote_id) ON DELETE CASCADE,
+    UNIQUE KEY unique_like (user_id, quote_id),
+    INDEX idx_user (user_id),
+    INDEX idx_quote (quote_id)
+);

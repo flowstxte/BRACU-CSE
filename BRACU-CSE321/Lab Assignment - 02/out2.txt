@@ -1,0 +1,134 @@
+Sample 1:
+
+Student 0 started waiting for consultation
+Number of students now waiting: 1
+A waiting student started getting consultation
+Number of students now waiting: 0
+ST giving consultation
+Student finished getting consultation and left
+Number of served students: 1
+Student 1 started waiting for consultation
+Number of students now waiting: 1
+A waiting student started getting consultation
+Number of students now waiting: 0
+ST giving consultation
+Student 2 started waiting for consultation
+Number of students now waiting: 1
+Student 3 started waiting for consultation
+Number of students now waiting: 2
+Student 4 started waiting for consultation
+Number of students now waiting: 3
+Student finished getting consultation and left
+Number of served students: 2
+A waiting student started getting consultation
+Number of students now waiting: 2
+ST giving consultation
+Student 5 started waiting for consultation
+Number of students now waiting: 3
+No chairs remaining in lobby. Student 6 Leaving.....
+No chairs remaining in lobby. Student 7 Leaving.....
+Student finished getting consultation and left
+Number of served students: 3
+A waiting student started getting consultation
+Number of students now waiting: 2
+ST giving consultation
+Student finished getting consultation and left
+Number of served students: 4
+A waiting student started getting consultation
+Number of students now waiting: 1
+ST giving consultation
+Student 8 started waiting for consultation
+Number of students now waiting: 2
+Student finished getting consultation and left
+Number of served students: 5
+A waiting student started getting consultation
+Number of students now waiting: 1
+ST giving consultation
+Student 9 started waiting for consultation
+Number of students now waiting: 2
+Student finished getting consultation and left
+Number of served students: 6
+A waiting student started getting consultation
+Number of students now waiting: 1
+ST giving consultation
+Student finished getting consultation and left
+Number of served students: 7
+A waiting student started getting consultation
+Number of students now waiting: 0
+ST giving consultation
+Student finished getting consultation and left
+Number of served students: 8
+
+
+Sample 2:
+
+Student 0 started waiting for consultation
+Number of students now waiting: 1
+A waiting student started getting consultation
+Number of students now waiting: 0
+ST giving consultation
+Student 1 started waiting for consultation
+Number of students now waiting: 1
+Student finished getting consultation and left
+Number of served students: 1
+A waiting student started getting consultation
+Number of students now waiting: 0
+ST giving consultation
+Student 2 started waiting for consultation
+Number of students now waiting: 1
+Student finished getting consultation and left
+Number of served students: 2
+A waiting student started getting consultation
+Number of students now waiting: 0
+ST giving consultation
+Student 3 started waiting for consultation
+Number of students now waiting: 1
+Student finished getting consultation and left
+Number of served students: 3
+A waiting student started getting consultation
+Number of students now waiting: 0
+ST giving consultation
+Student 4 started waiting for consultation
+Number of students now waiting: 1
+Student finished getting consultation and left
+Number of served students: 4
+A waiting student started getting consultation
+Number of students now waiting: 0
+ST giving consultation
+Student finished getting consultation and left
+Number of served students: 5
+Student 5 started waiting for consultation
+Number of students now waiting: 1
+A waiting student started getting consultation
+Number of students now waiting: 0
+ST giving consultation
+Student finished getting consultation and left
+Number of served students: 6
+Student 6 started waiting for consultation
+Number of students now waiting: 1
+A waiting student started getting consultation
+Number of students now waiting: 0
+ST giving consultation
+Student 7 started waiting for consultation
+Number of students now waiting: 1
+Student 8 started waiting for consultation
+Number of students now waiting: 2
+Student finished getting consultation and left
+Number of served students: 7
+A waiting student started getting consultation
+Number of students now waiting: 1
+ST giving consultation
+Student 9 started waiting for consultation
+Number of students now waiting: 2
+Student finished getting consultation and left
+Number of served students: 8
+A waiting student started getting consultation
+Number of students now waiting: 1
+ST giving consultation
+Student finished getting consultation and left
+Number of served students: 9
+A waiting student started getting consultation
+Number of students now waiting: 0
+ST giving consultation
+Student finished getting consultation and left
+Number of served students: 10

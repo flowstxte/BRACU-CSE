@@ -1,0 +1,715 @@
+New ScopeTable with ID 1 created
+
+At line no: 1 type_specifier : INT 
+
+int
+
+At line no: 1 type_specifier : INT 
+
+int
+
+At line no: 1 parameter_list : type_specifier ID 
+
+int a
+
+New ScopeTable with ID 2 created
+
+At line no: 2 variable : ID 
+
+a
+
+At line no: 2 factor : variable 
+
+a
+
+At line no: 2 unary_expression : factor 
+
+a
+
+At line no: 2 term : unary_expression 
+
+a
+
+At line no: 2 simple_expression : term 
+
+a
+
+At line no: 2 rel_expression : simple_expression 
+
+a
+
+At line no: 2 logic_expression : rel_expression 
+
+a
+
+At line no: 2 expression : logic_expression 
+
+a
+
+At line no: 2 statement : RETURN expression SEMICOLON 
+
+return a;
+
+At line no: 2 statements : statement 
+
+return a;
+
+At line no: 3 compound_statement : LCURL statements RCURL 
+
+{
+return a;
+}
+
+################################
+
+ScopeTable # 2
+7 --> 
+< a : ID >
+Variable
+Type: int
+
+
+ScopeTable # 1
+8 --> 
+< func : ID >
+Function Definition
+Return Type: int
+Number of Parameters: 1
+Parameter Details: int a
+
+################################
+
+Scopetable with ID 2 removed
+
+At line no: 3 func_definition : type_specifier ID LPAREN parameter_list RPAREN compound_statement 
+
+int func(int a)
+{
+return a;
+}
+
+At line no: 3 unit : func_definition 
+
+int func(int a)
+{
+return a;
+}
+
+At line no: 3 program : unit 
+
+int func(int a)
+{
+return a;
+}
+
+At line no: 5 type_specifier : INT 
+
+int
+
+New ScopeTable with ID 3 created
+
+At line no: 6 type_specifier : INT 
+
+int
+
+At line no: 6 declaration_list : ID LTHIRD CONST_INT RTHIRD 
+
+a[2]
+
+At line no: 6 declaration_list : declaration_list COMMA ID 
+
+a[2],c
+
+At line no: 6 declaration_list : declaration_list COMMA ID 
+
+a[2],c,i
+
+At line no: 6 declaration_list : declaration_list COMMA ID 
+
+a[2],c,i,j
+
+At line no: 6 var_declaration : type_specifier declaration_list SEMICOLON 
+
+int a[2],c,i,j;
+
+At line no: 6 statement : var_declaration 
+
+int a[2],c,i,j;
+
+At line no: 6 statements : statement 
+
+int a[2],c,i,j;
+
+At line no: 6 type_specifier : FLOAT 
+
+float
+
+At line no: 6 declaration_list : ID 
+
+c
+
+At line no: 6 var_declaration : type_specifier declaration_list SEMICOLON 
+
+float c;
+
+At line no: 6 Multiple declaration of variable c
+
+At line no: 6 statement : var_declaration 
+
+float c;
+
+At line no: 6 statements : statements statement 
+
+int a[2],c,i,j;
+float c;
+
+At line no: 7 factor : CONST_FLOAT 
+
+2.5
+
+At line no: 7 unary_expression : factor 
+
+2.5
+
+At line no: 7 term : unary_expression 
+
+2.5
+
+At line no: 7 simple_expression : term 
+
+2.5
+
+At line no: 7 rel_expression : simple_expression 
+
+2.5
+
+At line no: 7 logic_expression : rel_expression 
+
+2.5
+
+At line no: 7 expression : logic_expression 
+
+2.5
+
+At line no: 7 variable : ID LTHIRD expression RTHIRD 
+
+a[2.5]
+
+At line no: 7 array index is not of integer type : a
+
+At line no: 7 factor : CONST_INT 
+
+1
+
+At line no: 7 unary_expression : factor 
+
+1
+
+At line no: 7 term : unary_expression 
+
+1
+
+At line no: 7 simple_expression : term 
+
+1
+
+At line no: 7 rel_expression : simple_expression 
+
+1
+
+At line no: 7 logic_expression : rel_expression 
+
+1
+
+At line no: 7 expression : variable ASSIGNOP logic_expression 
+
+a[2.5]=1
+
+At line no: 7 expression_statement : expression SEMICOLON 
+
+a[2.5]=1;
+
+At line no: 7 statement : expression_statement 
+
+a[2.5]=1;
+
+At line no: 7 statements : statements statement 
+
+int a[2],c,i,j;
+float c;
+a[2.5]=1;
+
+At line no: 8 variable : ID 
+
+i
+
+At line no: 8 factor : CONST_FLOAT 
+
+2.3
+
+At line no: 8 unary_expression : factor 
+
+2.3
+
+At line no: 8 term : unary_expression 
+
+2.3
+
+At line no: 8 simple_expression : term 
+
+2.3
+
+At line no: 8 rel_expression : simple_expression 
+
+2.3
+
+At line no: 8 logic_expression : rel_expression 
+
+2.3
+
+At line no: 8 expression : variable ASSIGNOP logic_expression 
+
+i=2.3
+
+At line no: 8 Warning: Assignment of float value into variable of integer type 
+
+At line no: 8 expression_statement : expression SEMICOLON 
+
+i=2.3;
+
+At line no: 8 statement : expression_statement 
+
+i=2.3;
+
+At line no: 8 statements : statements statement 
+
+int a[2],c,i,j;
+float c;
+a[2.5]=1;
+i=2.3;
+
+At line no: 9 variable : ID 
+
+j
+
+At line no: 9 factor : CONST_INT 
+
+2
+
+At line no: 9 unary_expression : factor 
+
+2
+
+At line no: 9 term : unary_expression 
+
+2
+
+At line no: 9 factor : CONST_FLOAT 
+
+3.7
+
+At line no: 9 unary_expression : factor 
+
+3.7
+
+At line no: 9 term : term MULOP unary_expression 
+
+2%3.7
+
+At line no: 9 Modulus operator on non integer type 
+
+At line no: 9 simple_expression : term 
+
+2%3.7
+
+At line no: 9 rel_expression : simple_expression 
+
+2%3.7
+
+At line no: 9 logic_expression : rel_expression 
+
+2%3.7
+
+At line no: 9 expression : variable ASSIGNOP logic_expression 
+
+j=2%3.7
+
+At line no: 9 expression_statement : expression SEMICOLON 
+
+j=2%3.7;
+
+At line no: 9 statement : expression_statement 
+
+j=2%3.7;
+
+At line no: 9 statements : statements statement 
+
+int a[2],c,i,j;
+float c;
+a[2.5]=1;
+i=2.3;
+j=2%3.7;
+
+At line no: 10 variable : ID 
+
+a
+
+At line no: 10 variable is of array type : a
+
+At line no: 10 factor : CONST_INT 
+
+4
+
+At line no: 10 unary_expression : factor 
+
+4
+
+At line no: 10 term : unary_expression 
+
+4
+
+At line no: 10 simple_expression : term 
+
+4
+
+At line no: 10 rel_expression : simple_expression 
+
+4
+
+At line no: 10 logic_expression : rel_expression 
+
+4
+
+At line no: 10 expression : variable ASSIGNOP logic_expression 
+
+a=4
+
+At line no: 10 expression_statement : expression SEMICOLON 
+
+a=4;
+
+At line no: 10 statement : expression_statement 
+
+a=4;
+
+At line no: 10 statements : statements statement 
+
+int a[2],c,i,j;
+float c;
+a[2.5]=1;
+i=2.3;
+j=2%3.7;
+a=4;
+
+At line no: 11 variable : ID 
+
+a
+
+At line no: 11 variable is of array type : a
+
+At line no: 11 factor : variable 
+
+a
+
+At line no: 11 unary_expression : factor 
+
+a
+
+At line no: 11 term : unary_expression 
+
+a
+
+At line no: 11 simple_expression : term 
+
+a
+
+At line no: 11 rel_expression : simple_expression 
+
+a
+
+At line no: 11 logic_expression : rel_expression 
+
+a
+
+At line no: 11 arguments : logic_expression 
+
+a
+
+At line no: 11 argument_list : arguments 
+
+a
+
+At line no: 11 factor : ID LPAREN argument_list RPAREN 
+
+func(a)
+
+At line no: 11 unary_expression : factor 
+
+func(a)
+
+At line no: 11 term : unary_expression 
+
+func(a)
+
+At line no: 11 simple_expression : term 
+
+func(a)
+
+At line no: 11 rel_expression : simple_expression 
+
+func(a)
+
+At line no: 11 logic_expression : rel_expression 
+
+func(a)
+
+At line no: 11 expression : logic_expression 
+
+func(a)
+
+At line no: 11 expression_statement : expression SEMICOLON 
+
+func(a);
+
+At line no: 11 statement : expression_statement 
+
+func(a);
+
+At line no: 11 statements : statements statement 
+
+int a[2],c,i,j;
+float c;
+a[2.5]=1;
+i=2.3;
+j=2%3.7;
+a=4;
+func(a);
+
+At line no: 12 variable : ID 
+
+b
+
+At line no: 12 Undeclared variable b
+
+At line no: 12 factor : CONST_INT 
+
+8
+
+At line no: 12 unary_expression : factor 
+
+8
+
+At line no: 12 term : unary_expression 
+
+8
+
+At line no: 12 simple_expression : term 
+
+8
+
+At line no: 12 rel_expression : simple_expression 
+
+8
+
+At line no: 12 logic_expression : rel_expression 
+
+8
+
+At line no: 12 expression : variable ASSIGNOP logic_expression 
+
+b=8
+
+At line no: 12 expression_statement : expression SEMICOLON 
+
+b=8;
+
+At line no: 12 statement : expression_statement 
+
+b=8;
+
+At line no: 12 statements : statements statement 
+
+int a[2],c,i,j;
+float c;
+a[2.5]=1;
+i=2.3;
+j=2%3.7;
+a=4;
+func(a);
+b=8;
+
+At line no: 13 factor : CONST_INT 
+
+0
+
+At line no: 13 unary_expression : factor 
+
+0
+
+At line no: 13 term : unary_expression 
+
+0
+
+At line no: 13 simple_expression : term 
+
+0
+
+At line no: 13 rel_expression : simple_expression 
+
+0
+
+At line no: 13 logic_expression : rel_expression 
+
+0
+
+At line no: 13 expression : logic_expression 
+
+0
+
+At line no: 13 statement : RETURN expression SEMICOLON 
+
+return 0;
+
+At line no: 13 statements : statements statement 
+
+int a[2],c,i,j;
+float c;
+a[2.5]=1;
+i=2.3;
+j=2%3.7;
+a=4;
+func(a);
+b=8;
+return 0;
+
+At line no: 14 compound_statement : LCURL statements RCURL 
+
+{
+int a[2],c,i,j;
+float c;
+a[2.5]=1;
+i=2.3;
+j=2%3.7;
+a=4;
+func(a);
+b=8;
+return 0;
+}
+
+################################
+
+ScopeTable # 3
+5 --> 
+< i : ID >
+Variable
+Type: int
+
+6 --> 
+< j : ID >
+Variable
+Type: int
+
+7 --> 
+< a : ID >
+Array
+Type: int
+Size: 2
+
+9 --> 
+< c : ID >
+Variable
+Type: int
+
+
+ScopeTable # 1
+1 --> 
+< main : ID >
+Function Definition
+Return Type: int
+Number of Parameters: 0
+Parameter Details: 
+8 --> 
+< func : ID >
+Function Definition
+Return Type: int
+Number of Parameters: 1
+Parameter Details: int a
+
+################################
+
+Scopetable with ID 3 removed
+
+At line no: 14 func_definition : type_specifier ID LPAREN RPAREN compound_statement 
+
+int main()
+{
+int a[2],c,i,j;
+float c;
+a[2.5]=1;
+i=2.3;
+j=2%3.7;
+a=4;
+func(a);
+b=8;
+return 0;
+}
+
+At line no: 14 unit : func_definition 
+
+int main()
+{
+int a[2],c,i,j;
+float c;
+a[2.5]=1;
+i=2.3;
+j=2%3.7;
+a=4;
+func(a);
+b=8;
+return 0;
+}
+
+At line no: 14 program : program unit 
+
+int func(int a)
+{
+return a;
+}
+int main()
+{
+int a[2],c,i,j;
+float c;
+a[2.5]=1;
+i=2.3;
+j=2%3.7;
+a=4;
+func(a);
+b=8;
+return 0;
+}
+
+At line no: 15 start : program 
+
+Symbol Table
+
+################################
+
+ScopeTable # 1
+1 --> 
+< main : ID >
+Function Definition
+Return Type: int
+Number of Parameters: 0
+Parameter Details: 
+8 --> 
+< func : ID >
+Function Definition
+Return Type: int
+Number of Parameters: 1
+Parameter Details: int a
+
+################################
+
+
+Total lines: 15
+Total errors: 7

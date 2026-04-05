@@ -1,0 +1,18 @@
+Loading dataset...
+AnnData object with n_obs   n_vars = 4247   36601
+    var: 'gene_ids', 'feature_types', 'genome'
+Preprocessing: normalize -> log1p -> HVG -> scale
+Running KMeans...
+Running Gaussian Mixture Model...
+Running Hierarchical Clustering...
+Silhouette scores (higher is better):
+  kmeans: 0.0946
+  gmm: 0.1145
+  hierarchical: 0.1425
+Saving UMAP plots...
+Saved plot: umap_kmeans.png
+Saved plot: umap_gmm.png
+Saved plot: umap_hierarchical.png
+Saved cluster assignments to cluster_assignments.csv
+Saved annotated AnnData to human_heart_clustered.h5ad
+Done.

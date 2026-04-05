@@ -1,0 +1,1029 @@
+New ScopeTable with ID 1 created
+
+At line no: 1 type_specifier : INT 
+
+int
+
+New ScopeTable with ID 2 created
+
+At line no: 3 type_specifier : INT 
+
+int
+
+At line no: 3 declaration_list : ID 
+
+a
+
+At line no: 3 var_declaration : type_specifier declaration_list SEMICOLON 
+
+int a;
+
+At line no: 3 statement : var_declaration 
+
+int a;
+
+At line no: 3 statements : statement 
+
+int a;
+
+At line no: 5 variable : ID 
+
+a
+
+At line no: 5 factor : variable 
+
+a
+
+At line no: 5 unary_expression : factor 
+
+a
+
+At line no: 5 term : unary_expression 
+
+a
+
+At line no: 5 simple_expression : term 
+
+a
+
+At line no: 5 factor : CONST_INT 
+
+1
+
+At line no: 5 unary_expression : factor 
+
+1
+
+At line no: 5 term : unary_expression 
+
+1
+
+At line no: 5 simple_expression : term 
+
+1
+
+At line no: 5 rel_expression : simple_expression RELOP simple_expression 
+
+a>1
+
+At line no: 5 logic_expression : rel_expression 
+
+a>1
+
+At line no: 5 expression : logic_expression 
+
+a>1
+
+New ScopeTable with ID 3 created
+
+At line no: 6 type_specifier : FLOAT 
+
+float
+
+At line no: 6 declaration_list : ID 
+
+a
+
+At line no: 6 var_declaration : type_specifier declaration_list SEMICOLON 
+
+float a;
+
+At line no: 6 statement : var_declaration 
+
+float a;
+
+At line no: 6 statements : statement 
+
+float a;
+
+At line no: 8 variable : ID 
+
+a
+
+At line no: 8 factor : variable 
+
+a
+
+At line no: 8 unary_expression : factor 
+
+a
+
+At line no: 8 term : unary_expression 
+
+a
+
+At line no: 8 simple_expression : term 
+
+a
+
+At line no: 8 factor : CONST_INT 
+
+1
+
+At line no: 8 unary_expression : factor 
+
+1
+
+At line no: 8 term : unary_expression 
+
+1
+
+At line no: 8 simple_expression : term 
+
+1
+
+At line no: 8 rel_expression : simple_expression RELOP simple_expression 
+
+a>1
+
+At line no: 8 logic_expression : rel_expression 
+
+a>1
+
+At line no: 8 expression : logic_expression 
+
+a>1
+
+New ScopeTable with ID 4 created
+
+At line no: 9 type_specifier : INT 
+
+int
+
+At line no: 9 declaration_list : ID 
+
+a
+
+At line no: 9 var_declaration : type_specifier declaration_list SEMICOLON 
+
+int a;
+
+At line no: 9 statement : var_declaration 
+
+int a;
+
+At line no: 9 statements : statement 
+
+int a;
+
+At line no: 11 variable : ID 
+
+a
+
+At line no: 11 factor : variable 
+
+a
+
+At line no: 11 unary_expression : factor 
+
+a
+
+At line no: 11 term : unary_expression 
+
+a
+
+At line no: 11 simple_expression : term 
+
+a
+
+At line no: 11 factor : CONST_INT 
+
+1
+
+At line no: 11 unary_expression : factor 
+
+1
+
+At line no: 11 term : unary_expression 
+
+1
+
+At line no: 11 simple_expression : term 
+
+1
+
+At line no: 11 rel_expression : simple_expression RELOP simple_expression 
+
+a>1
+
+At line no: 11 logic_expression : rel_expression 
+
+a>1
+
+At line no: 11 expression : logic_expression 
+
+a>1
+
+New ScopeTable with ID 5 created
+
+At line no: 12 type_specifier : FLOAT 
+
+float
+
+At line no: 12 declaration_list : ID 
+
+a
+
+At line no: 12 var_declaration : type_specifier declaration_list SEMICOLON 
+
+float a;
+
+At line no: 12 statement : var_declaration 
+
+float a;
+
+At line no: 12 statements : statement 
+
+float a;
+
+At line no: 14 variable : ID 
+
+a
+
+At line no: 14 factor : variable 
+
+a
+
+At line no: 14 unary_expression : factor 
+
+a
+
+At line no: 14 term : unary_expression 
+
+a
+
+At line no: 14 simple_expression : term 
+
+a
+
+At line no: 14 factor : CONST_INT 
+
+1
+
+At line no: 14 unary_expression : factor 
+
+1
+
+At line no: 14 term : unary_expression 
+
+1
+
+At line no: 14 simple_expression : term 
+
+1
+
+At line no: 14 rel_expression : simple_expression RELOP simple_expression 
+
+a>1
+
+At line no: 14 logic_expression : rel_expression 
+
+a>1
+
+At line no: 14 expression : logic_expression 
+
+a>1
+
+New ScopeTable with ID 6 created
+
+At line no: 15 type_specifier : INT 
+
+int
+
+At line no: 15 declaration_list : ID 
+
+a
+
+At line no: 15 var_declaration : type_specifier declaration_list SEMICOLON 
+
+int a;
+
+At line no: 15 statement : var_declaration 
+
+int a;
+
+At line no: 15 statements : statement 
+
+int a;
+
+At line no: 17 variable : ID 
+
+a
+
+At line no: 17 factor : variable 
+
+a
+
+At line no: 17 unary_expression : factor 
+
+a
+
+At line no: 17 term : unary_expression 
+
+a
+
+At line no: 17 simple_expression : term 
+
+a
+
+At line no: 17 factor : CONST_INT 
+
+1
+
+At line no: 17 unary_expression : factor 
+
+1
+
+At line no: 17 term : unary_expression 
+
+1
+
+At line no: 17 simple_expression : term 
+
+1
+
+At line no: 17 rel_expression : simple_expression RELOP simple_expression 
+
+a>1
+
+At line no: 17 logic_expression : rel_expression 
+
+a>1
+
+At line no: 17 expression : logic_expression 
+
+a>1
+
+New ScopeTable with ID 7 created
+
+At line no: 18 type_specifier : FLOAT 
+
+float
+
+At line no: 18 declaration_list : ID 
+
+a
+
+At line no: 18 var_declaration : type_specifier declaration_list SEMICOLON 
+
+float a;
+
+At line no: 18 statement : var_declaration 
+
+float a;
+
+At line no: 18 statements : statement 
+
+float a;
+
+At line no: 19 compound_statement : LCURL statements RCURL 
+
+{
+float a;
+}
+
+################################
+
+ScopeTable # 7
+7 --> 
+< a : ID >
+Variable
+Type: float
+
+
+ScopeTable # 6
+7 --> 
+< a : ID >
+Variable
+Type: int
+
+
+ScopeTable # 5
+7 --> 
+< a : ID >
+Variable
+Type: float
+
+
+ScopeTable # 4
+7 --> 
+< a : ID >
+Variable
+Type: int
+
+
+ScopeTable # 3
+7 --> 
+< a : ID >
+Variable
+Type: float
+
+
+ScopeTable # 2
+7 --> 
+< a : ID >
+Variable
+Type: int
+
+
+ScopeTable # 1
+8 --> 
+< func : ID >
+Function Definition
+Return Type: int
+Number of Parameters: 0
+Parameter Details: 
+
+################################
+
+Scopetable with ID 7 removed
+
+At line no: 19 statement : compound_statement 
+
+{
+float a;
+}
+
+At line no: 20 statement : IF LPAREN expression RPAREN statement 
+
+if(a>1)
+{
+float a;
+}
+
+At line no: 20 statements : statements statement 
+
+int a;
+if(a>1)
+{
+float a;
+}
+
+At line no: 20 compound_statement : LCURL statements RCURL 
+
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+
+################################
+
+ScopeTable # 6
+7 --> 
+< a : ID >
+Variable
+Type: int
+
+
+ScopeTable # 5
+7 --> 
+< a : ID >
+Variable
+Type: float
+
+
+ScopeTable # 4
+7 --> 
+< a : ID >
+Variable
+Type: int
+
+
+ScopeTable # 3
+7 --> 
+< a : ID >
+Variable
+Type: float
+
+
+ScopeTable # 2
+7 --> 
+< a : ID >
+Variable
+Type: int
+
+
+ScopeTable # 1
+8 --> 
+< func : ID >
+Function Definition
+Return Type: int
+Number of Parameters: 0
+Parameter Details: 
+
+################################
+
+Scopetable with ID 6 removed
+
+At line no: 20 statement : compound_statement 
+
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+
+At line no: 21 statement : IF LPAREN expression RPAREN statement 
+
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+
+At line no: 21 statements : statements statement 
+
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+
+At line no: 21 compound_statement : LCURL statements RCURL 
+
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+}
+
+################################
+
+ScopeTable # 5
+7 --> 
+< a : ID >
+Variable
+Type: float
+
+
+ScopeTable # 4
+7 --> 
+< a : ID >
+Variable
+Type: int
+
+
+ScopeTable # 3
+7 --> 
+< a : ID >
+Variable
+Type: float
+
+
+ScopeTable # 2
+7 --> 
+< a : ID >
+Variable
+Type: int
+
+
+ScopeTable # 1
+8 --> 
+< func : ID >
+Function Definition
+Return Type: int
+Number of Parameters: 0
+Parameter Details: 
+
+################################
+
+Scopetable with ID 5 removed
+
+At line no: 21 statement : compound_statement 
+
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+}
+
+At line no: 22 statement : IF LPAREN expression RPAREN statement 
+
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+}
+
+At line no: 22 statements : statements statement 
+
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+}
+
+At line no: 22 compound_statement : LCURL statements RCURL 
+
+{
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+}
+}
+
+################################
+
+ScopeTable # 4
+7 --> 
+< a : ID >
+Variable
+Type: int
+
+
+ScopeTable # 3
+7 --> 
+< a : ID >
+Variable
+Type: float
+
+
+ScopeTable # 2
+7 --> 
+< a : ID >
+Variable
+Type: int
+
+
+ScopeTable # 1
+8 --> 
+< func : ID >
+Function Definition
+Return Type: int
+Number of Parameters: 0
+Parameter Details: 
+
+################################
+
+Scopetable with ID 4 removed
+
+At line no: 22 statement : compound_statement 
+
+{
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+}
+}
+
+At line no: 23 statement : IF LPAREN expression RPAREN statement 
+
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+}
+}
+
+At line no: 23 statements : statements statement 
+
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+}
+}
+
+At line no: 23 compound_statement : LCURL statements RCURL 
+
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+}
+}
+}
+
+################################
+
+ScopeTable # 3
+7 --> 
+< a : ID >
+Variable
+Type: float
+
+
+ScopeTable # 2
+7 --> 
+< a : ID >
+Variable
+Type: int
+
+
+ScopeTable # 1
+8 --> 
+< func : ID >
+Function Definition
+Return Type: int
+Number of Parameters: 0
+Parameter Details: 
+
+################################
+
+Scopetable with ID 3 removed
+
+At line no: 23 statement : compound_statement 
+
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+}
+}
+}
+
+At line no: 24 statement : IF LPAREN expression RPAREN statement 
+
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+}
+}
+}
+
+At line no: 24 statements : statements statement 
+
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+}
+}
+}
+
+At line no: 24 compound_statement : LCURL statements RCURL 
+
+{
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+}
+}
+}
+}
+
+################################
+
+ScopeTable # 2
+7 --> 
+< a : ID >
+Variable
+Type: int
+
+
+ScopeTable # 1
+8 --> 
+< func : ID >
+Function Definition
+Return Type: int
+Number of Parameters: 0
+Parameter Details: 
+
+################################
+
+Scopetable with ID 2 removed
+
+At line no: 24 func_definition : type_specifier ID LPAREN RPAREN compound_statement 
+
+int func()
+{
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+}
+}
+}
+}
+
+At line no: 24 unit : func_definition 
+
+int func()
+{
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+}
+}
+}
+}
+
+At line no: 24 program : unit 
+
+int func()
+{
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+if(a>1)
+{
+int a;
+if(a>1)
+{
+float a;
+}
+}
+}
+}
+}
+}
+
+At line no: 24 start : program 
+
+Symbol Table
+
+################################
+
+ScopeTable # 1
+8 --> 
+< func : ID >
+Function Definition
+Return Type: int
+Number of Parameters: 0
+Parameter Details: 
+
+################################
+
+
+Total lines: 24

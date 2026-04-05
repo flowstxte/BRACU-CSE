@@ -1,0 +1,69 @@
+R1:
+
+Router>en
+Router#erase startup-config
+Router#reload
+Router>en
+Router#conf t
+Router(config)#hostname R1
+R1(config)#no ip domain-lookup
+R1(config)#enable secret class
+R1(config)#banner motd &
+********************************
+ !!!AUTHORIZED ACCESS ONLY!!!
+********************************
+&
+R1(config)#line console 0
+R1(config-line)#password cisco
+R1(config-line)#login
+R1(config-line)#exit
+R1(config)#line vty 0 4
+R1(config-line)#password cisco
+R1(config-line)#login
+R1(config-line)#exit
+R1(config)#interface fastethernet 0/0
+R1(config-if)#ip address 192.168.1.1 255.255.255.0
+R1(config-if)#no shut
+R1(config-if)#interface serial 0/0/0
+R1(config-if)#ip address 192.168.2.1 255.255.255.0
+R1(config-if)#clock rate 64000
+R1(config-if)#no shut
+R1(config-if)#exit
+R1#copy running-config startup-config
+
+R2:
+
+Router>en
+Router#erase startup-config
+Router#reload
+Router>en
+Router#conf t
+Router(config)#hostname R2
+R2(config)#no ip domain-lookup
+R2(config)#enable secret class
+R2(config)#banner motd &
+********************************
+ !!!AUTHORIZED ACCESS ONLY!!!
+********************************
+&
+R2(config)#line console 0
+R2(config-line)#password cisco
+R2(config-line)#login
+R2(config-line)#exit
+R2(config)#line vty 0 4
+R2(config-line)#password cisco
+R2(config-line)#login
+R2(config-line)#exit
+R2(config)#interface serial 0/0/0
+R2(config-if)#ip address 192.168.2.2 255.255.255.0
+R2(config-if)#no shut
+R2(config-if)#interface fastethernet 0/0
+R2(config-if)#ip address 192.168.3.1 255.255.255.0
+R2(config-if)#no shut
+R2(config-if)#exit
+R2#copy running-config startup-config
+
+R1#show ip route
+R1#show ip interface brief
+R2#show ip route
+R2#show ip interface brief

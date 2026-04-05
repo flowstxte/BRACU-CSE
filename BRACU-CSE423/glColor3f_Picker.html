@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColorPicker</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .color-input-container {
+            margin-bottom: 30px;
+        }
+        
+        .color-input {
+            width: 200px;
+            height: 80px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .color-input:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .color-preview {
+            width: 100%;
+            height: 100px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .values-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .value-group {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+        }
+        
+        .value-group h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .rgb-values {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .rgb-value {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 8px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .code-container {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .code-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        .code-output {
+            font-size: 1.1em;
+            line-height: 1.6;
+            word-break: break-all;
+            text-align: left;
+        }
+        
+        .copy-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .copy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .copy-button:active {
+            transform: translateY(0);
+        }
+        
+        .hex-display {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 600px) {
+            .values-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ColorPicker</h1>
+        
+        <div class="color-input-container">
+            <input type="color" id="colorPicker" class="color-input" value="#ff0000">
+        </div>
+        
+        <div class="color-preview" id="colorPreview"></div>
+        
+        <div class="values-container">
+            <div class="value-group">
+                <h3>RGB (0-255)</h3>
+                <div class="rgb-values">
+                    <div class="rgb-value">R: <span id="rgbR">255</span></div>
+                    <div class="rgb-value">G: <span id="rgbG">0</span></div>
+                    <div class="rgb-value">B: <span id="rgbB">0</span></div>
+                </div>
+                <div class="hex-display">Hex: <span id="hexValue">#FF0000</span></div>
+            </div>
+            
+            <div class="value-group">
+                <h3>OpenGL (0.0-1.0)</h3>
+                <div class="rgb-values">
+                    <div class="rgb-value">R: <span id="glR">1.000</span></div>
+                    <div class="rgb-value">G: <span id="glG">0.000</span></div>
+                    <div class="rgb-value">B: <span id="glB">0.000</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="code-container">
+            <div class="code-output" id="codeOutput">glColor3f(1.000, 0.000, 0.000)</div>
+            <button class="copy-button" onclick="copyToClipboard()">Copy Code</button>
+        </div>
+    </div>
+
+    <script>
+        const colorPicker = document.getElementById('colorPicker');
+        const colorPreview = document.getElementById('colorPreview');
+        const rgbR = document.getElementById('rgbR');
+        const rgbG = document.getElementById('rgbG');
+        const rgbB = document.getElementById('rgbB');
+        const glR = document.getElementById('glR');
+        const glG = document.getElementById('glG');
+        const glB = document.getElementById('glB');
+        const hexValue = document.getElementById('hexValue');
+        const codeOutput = document.getElementById('codeOutput');
+        
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+        
+        function updateColor() {
+            const hexColor = colorPicker.value;
+            const rgb = hexToRgb(hexColor);
+            
+            if (rgb) {
+                // Update preview
+                colorPreview.style.backgroundColor = hexColor;
+                
+                // Update RGB values
+                rgbR.textContent = rgb.r;
+                rgbG.textContent = rgb.g;
+                rgbB.textContent = rgb.b;
+                
+                // Update hex display
+                hexValue.textContent = hexColor.toUpperCase();
+                
+                // Convert to OpenGL format (0.0 to 1.0)
+                const glRed = (rgb.r / 255).toFixed(3);
+                const glGreen = (rgb.g / 255).toFixed(3);
+                const glBlue = (rgb.b / 255).toFixed(3);
+                
+                // Update OpenGL values
+                glR.textContent = glRed;
+                glG.textContent = glGreen;
+                glB.textContent = glBlue;
+                
+                // Update code output
+                codeOutput.textContent = `glColor3f(${glRed}, ${glGreen}, ${glBlue})`;
+            }
+        }
+        
+        function copyToClipboard() {
+            const code = codeOutput.textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const button = document.querySelector('.copy-button');
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
+                }, 2000);
+            });
+        }
+        
+        // Initialize
+        updateColor();
+        
+        // Event listener
+        colorPicker.addEventListener('input', updateColor);
+    </script>
+</body>
+</html>

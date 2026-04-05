@@ -1,0 +1,20 @@
+Loading Visium dataset...
+AnnData object with n_obs   n_vars = 4035   36601
+    obs: 'in_tissue', 'array_row', 'array_col'
+    var: 'gene_ids', 'feature_types', 'genome'
+    uns: 'spatial'
+    obsm: 'spatial'
+Preprocessing: normalize -> log1p -> HVG -> scale
+Running K-Means...
+Running Gaussian Mixture Model...
+Running Hierarchical Clustering...
+Silhouette scores (higher is better):
+  kmeans: 0.1948
+  gmm: 0.1482
+  hierarchical: 0.1403
+Saved plot: umap_kmeans.png
+Saved plot: umap_gmm.png
+Saved plot: umap_hierarchical.png
+Saved cluster assignments to cluster_assignments.csv
+Saved annotated AnnData to visium_clustered.h5ad
+Done.
