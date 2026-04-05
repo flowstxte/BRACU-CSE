@@ -1,0 +1,15 @@
+The result of 67 + 41 is 108
+The result of 85 / 5 is 17.0
+The result of 13 - 56 is -43
+The result of 99 - 95 is 4
+The result of 3 / 10 is 0.3
+The result of 12 * 19 is 228
+The result of 14 - 6 is 8
+The result of 3 * 88 is 264
+The result of 45 * 68 is 3060
+The result of 81 - 0 is 81
+The result of 77 + 40 is 117
+The result of 8 * 84 is 672
+The result of 73 - 22 is 51
+The result of 85 - 86 is -1
+The result of 28 * 58 is 1624

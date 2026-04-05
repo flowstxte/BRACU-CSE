@@ -1,0 +1,16 @@
+15
+calculate 67 + 41
+calculate 85 / 5
+calculate 13 - 56
+calculate 99 - 95
+calculate 3 / 10
+calculate 12 * 19
+calculate 14 - 6
+calculate 3 * 88
+calculate 45 * 68
+calculate 81 - 0
+calculate 77 + 40
+calculate 8 * 84
+calculate 73 - 22
+calculate 85 - 86
+calculate 28 * 58
