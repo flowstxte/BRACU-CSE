@@ -2,10 +2,6 @@
 
 This repository serves as a personal archive of the labs, coursework, and assignments I have completed throughout my academic timeline at BRAC University.
 
-## Author
-
-**Ullas Sarker Tirtha** (GitHub: [@flowstxte](https://github.com/flowstxte))
-
 ## Courses
 
 The repository is systematically organized by course. Below are the official titles for the courses included:
