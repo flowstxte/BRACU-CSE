@@ -25,7 +25,7 @@ date_default_timezone_set('Asia/Dhaka');
 // Helper function to sanitize input
 function sanitize($data) {
     global $conn;
-    return $conn->real_escape_string(trim(stripslashes($data)));
+    return $conn->real_escape_string(trim($data));
 }
 function sanitizeHTML($data) {
     return htmlspecialchars($data, ENT_QUOTES, 'UTF-8');

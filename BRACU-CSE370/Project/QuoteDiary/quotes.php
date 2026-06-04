@@ -100,34 +100,40 @@ elseif ($action === 'create_quote') {
     if ($stmt->execute()) {
         $quote_id = $conn->insert_id;
         
-        // Handle image upload
-        if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
-            if ($_FILES['image']['size'] > 5 * 1024 * 1024) {
-                echo json_encode(['success' => false, 'message' => 'Image must be under 5MB']);
-                exit();
-            }
-            $finfo = finfo_open(FILEINFO_MIME_TYPE);
-            $mimeType = finfo_file($finfo, $_FILES['image']['tmp_name']);
-            $allowedMimes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
-            if (!in_array($mimeType, $allowedMimes)) {
-                echo json_encode(['success' => false, 'message' => 'Invalid file type']);
-                exit();
-            }
-            $allowed = ['jpg', 'jpeg', 'png', 'gif'];
-            $filename = $_FILES['image']['name'];
-            $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-            
-            if (in_array($ext, $allowed)) {
-                $new_filename = 'quote_' . $quote_id . '_' . time() . '.' . $ext;
-                $upload_path = 'media/uploads/' . $new_filename;
-                
-                if (move_uploaded_file($_FILES['image']['tmp_name'], $upload_path)) {
-                    $stmt = $conn->prepare("INSERT INTO media (quote_id, media_url) VALUES (?, ?)");
-                    $stmt->bind_param("is", $quote_id, $upload_path);
-                    $stmt->execute();
-                }
+    // Handle image upload
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
+        // Validate BEFORE insert — size check
+        if ($_FILES['image']['size'] > 5 * 1024 * 1024) {
+            // Rollback the quote we just inserted
+            $conn->query("DELETE FROM quotes WHERE quote_id = $quote_id");
+            echo json_encode(['success' => false, 'message' => 'Image must be under 5MB. Quote was not posted.']);
+            exit();
+        }
+
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mimeType = finfo_file($finfo, $_FILES['image']['tmp_name']);
+        $allowedMimes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
+        if (!in_array($mimeType, $allowedMimes)) {
+            $conn->query("DELETE FROM quotes WHERE quote_id = $quote_id");
+            echo json_encode(['success' => false, 'message' => 'Invalid file type. Quote was not posted.']);
+            exit();
+        }
+
+        $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+        $filename = $_FILES['image']['name'];
+        $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+        if (in_array($ext, $allowed)) {
+            $new_filename = 'quote_' . $quote_id . '_' . time() . '.' . $ext;
+            $upload_path = 'media/uploads/' . $new_filename;
+
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $upload_path)) {
+                $stmt = $conn->prepare("INSERT INTO media (quote_id, media_url) VALUES (?, ?)");
+                $stmt->bind_param("is", $quote_id, $upload_path);
+                $stmt->execute();
             }
         }
+    }
         
         echo json_encode(['success' => true, 'message' => 'Quote created successfully', 'quote_id' => $quote_id]);
     } else {
