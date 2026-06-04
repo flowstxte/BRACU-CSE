@@ -36,26 +36,31 @@ $currentUser = getCurrentUser();
 
     <!-- Main Content -->
     <div class="container" style="margin-top: 2rem;">
-        <?php if ($currentUser): ?>
-            <!-- Welcome Section -->
-            <div style="background: var(--gradient-1); padding: 2rem; border-radius: 25px; margin-bottom: 2rem; text-align: center;">
-                <h1>Welcome back, <?php echo htmlspecialchars($currentUser['username']); ?>!</h1>
-                <p style="color: var(--text-secondary);">Share your thoughts and inspire others</p>
-                <button class="btn btn-primary mt-1" onclick="openCreateModal()">Create New Quote</button>
+        <!-- Quote of the Day Section -->
+        <div id="qotdSection" style="margin-bottom: 2rem;">
+            <div style="text-align:center; padding: 1rem 0 0.5rem;">
+                <span style="background: var(--accent-primary); color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">✨ Quote of the Day</span>
             </div>
-        <?php else: ?>
-            <!-- Hero Section for non-logged users -->
-            <div style="background: var(--gradient-1); padding: 3rem; border-radius: 30px; margin-bottom: 2rem; text-align: center;">
-                <h1 style="font-size: 3rem; margin-bottom: 1rem;">Quote Diary</h1>
-                <p style="font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 2rem;">
-                    Express yourself, inspire others, and build your personal collection of meaningful quotes
-                </p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <div id="qotdCard" style="background: var(--gradient-1); border-radius: 30px; padding: 2.5rem 2rem; margin-top: 0.75rem; position: relative; overflow: hidden;">
+                <!-- Decorative large quote mark -->
+                <div style="position:absolute;top:-10px;left:10px;font-size:10rem;color:var(--accent-primary);opacity:0.08;line-height:1;pointer-events:none;">"</div>
+
+                <div id="qotdContent" style="text-align:center;">
+                    <div class="spinner"></div>
+                </div>
+
+                <?php if ($currentUser): ?>
+                <div style="text-align:center; margin-top:1.5rem;">
+                    <button class="btn btn-primary" onclick="openCreateModal()">+ Share Your Quote</button>
+                </div>
+                <?php else: ?>
+                <div style="display:flex; gap:1rem; justify-content:center; margin-top:1.5rem; flex-wrap:wrap;">
                     <a href="signup.php" class="btn btn-primary">Get Started</a>
                     <a href="login.php" class="btn btn-secondary">Login</a>
                 </div>
+                <?php endif; ?>
             </div>
-        <?php endif; ?>
+        </div>
 
         <!-- Search & Filter -->
         <div class="search-bar">
@@ -143,6 +148,7 @@ $currentUser = getCurrentUser();
         
         // Load quotes on page load
         document.addEventListener('DOMContentLoaded', function() {
+            loadQuoteOfDay();
             loadQuotesOnHome();
         });
         
@@ -178,6 +184,58 @@ $currentUser = getCurrentUser();
                     console.error('Error loading quotes:', error);
                     container.innerHTML = '<p class="text-center">Error loading quotes</p>';
                 });
+        }
+
+        async function loadQuoteOfDay() {
+            const content = document.getElementById('qotdContent');
+            if (!content) return;
+
+            try {
+                const response = await fetch('quotes.php?action=get_quote_of_day');
+                const data = await response.json();
+
+                if (data.success) {
+                    const q = data.quote;
+                    const isLiked = q.user_liked > 0;
+                    const isFavorited = q.user_favorited > 0;
+
+                    content.innerHTML = `
+                        <p style="font-size:1.4rem;font-style:italic;line-height:1.8;color:var(--text-primary);margin-bottom:1rem;max-width:700px;margin-left:auto;margin-right:auto;">
+                            ${q.quote_text}
+                        </p>
+                        <div style="display:flex;align-items:center;justify-content:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+                            <img src="${q.profile_picture || 'media/assets/default-avatar.png'}" style="width:36px;height:36px;border-radius:50%;border:2px solid var(--accent-primary);object-fit:cover;">
+                            <span style="font-weight:600;color:var(--text-primary);">${q.username}</span>
+                            ${q.author_name && q.author_name.toLowerCase() !== 'self' && q.author_name.trim() !== '' ? `<span style="color:var(--text-secondary);">· ${q.author_name}</span>` : ''}
+                            ${q.category ? `<span class="tag">${q.category}</span>` : ''}
+                            ${q.mood ? `<span class="tag">${q.mood}</span>` : ''}
+                        </div>
+                        <div style="display:flex;justify-content:center;gap:1.5rem;margin-top:0.75rem;">
+                            <button class="action-btn ${isLiked ? 'active' : ''}" onclick="toggleLike(${q.quote_id}, this)">
+                                ${isLiked ? '❤️' : '🤍'} <span>${q.likes_count || 0}</span>
+                            </button>
+                            <button class="action-btn" onclick="toggleComments(${q.quote_id})">
+                                💬 <span>${q.comments_count || 0}</span>
+                            </button>
+                            <button class="action-btn ${isFavorited ? 'active' : ''}" onclick="toggleFavorite(${q.quote_id}, this)">
+                                ${isFavorited ? '⭐' : '☆'}
+                            </button>
+                        </div>
+                        <div class="comments-section hidden" id="comments-${q.quote_id}">
+                            <div class="comments-list"></div>
+                            ${window.currentUserId ? `
+                            <div class="form-group mt-1">
+                                <input type="text" class="form-control" placeholder="Add a comment..." onkeypress="handleCommentKeypress(event, ${q.quote_id})">
+                            </div>` : ''}
+                        </div>
+                    `;
+                } else {
+                    content.innerHTML = `<p style="color:var(--text-secondary);font-style:italic;">No quotes yet — be the first to share!</p>`;
+                }
+            } catch (err) {
+                console.error('Error loading quote of day:', err);
+                content.innerHTML = `<p style="color:var(--text-secondary);">Could not load quote of the day.</p>`;
+            }
         }
         
         // Open modal for creating new quote

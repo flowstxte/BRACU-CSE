@@ -347,6 +347,49 @@ elseif ($action === 'get_favorites') {
     echo json_encode(['success' => true, 'quotes' => $quotes]);
 }
 
+// Get quote of the day (most liked quote from last 7 days)
+elseif ($action === 'get_quote_of_day') {
+    $sql = "SELECT q.*, u.username, u.profile_picture,
+            (SELECT COUNT(*) FROM likes WHERE quote_id = q.quote_id) as likes_count,
+            (SELECT COUNT(*) FROM comments WHERE quote_id = q.quote_id) as comments_count,
+            (SELECT media_url FROM media WHERE quote_id = q.quote_id LIMIT 1) as image_url";
+
+    if (isLoggedIn()) {
+        $current_user_id = $_SESSION['user_id'];
+        $sql .= ", (SELECT COUNT(*) FROM likes WHERE quote_id = q.quote_id AND user_id = $current_user_id) as user_liked,
+                  (SELECT COUNT(*) FROM favorites WHERE quote_id = q.quote_id AND user_id = $current_user_id) as user_favorited";
+    } else {
+        $sql .= ", 0 as user_liked, 0 as user_favorited";
+    }
+
+    $sql .= " FROM quotes q JOIN users u ON q.user_id = u.user_id
+              WHERE q.date_added >= DATE_SUB(NOW(), INTERVAL 7 DAY)
+              ORDER BY likes_count DESC, q.date_added DESC
+              LIMIT 1";
+
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        echo json_encode(['success' => true, 'quote' => $result->fetch_assoc()]);
+    } else {
+        // Fallback: most liked quote of all time
+        $sql2 = "SELECT q.*, u.username, u.profile_picture,
+                (SELECT COUNT(*) FROM likes WHERE quote_id = q.quote_id) as likes_count,
+                (SELECT COUNT(*) FROM comments WHERE quote_id = q.quote_id) as comments_count,
+                (SELECT media_url FROM media WHERE quote_id = q.quote_id LIMIT 1) as image_url,
+                0 as user_liked, 0 as user_favorited
+                FROM quotes q JOIN users u ON q.user_id = u.user_id
+                ORDER BY likes_count DESC, q.date_added DESC
+                LIMIT 1";
+        $result2 = $conn->query($sql2);
+        if ($result2 && $result2->num_rows > 0) {
+            echo json_encode(['success' => true, 'quote' => $result2->fetch_assoc()]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'No quotes yet']);
+        }
+    }
+}
+
 else {
     echo json_encode(['success' => false, 'message' => 'Invalid action']);
 }
