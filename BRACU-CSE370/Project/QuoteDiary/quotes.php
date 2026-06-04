@@ -321,13 +321,15 @@ elseif ($action === 'get_favorites') {
     $user_id = $_SESSION['user_id'];
     
     $sql = "SELECT q.*, u.username, u.profile_picture,
-            (SELECT COUNT(*) FROM likes WHERE quote_id = q.quote_id) as likes_count,
-            (SELECT media_url FROM media WHERE quote_id = q.quote_id LIMIT 1) as image_url
-            FROM quotes q 
-            JOIN users u ON q.user_id = u.user_id
-            JOIN favorites f ON q.quote_id = f.quote_id
-            WHERE f.user_id = $user_id
-            ORDER BY f.date_favorited DESC";
+        (SELECT COUNT(*) FROM likes WHERE quote_id = q.quote_id) as likes_count,
+        (SELECT COUNT(*) FROM likes WHERE quote_id = q.quote_id AND user_id = $user_id) as user_liked,
+        (SELECT media_url FROM media WHERE quote_id = q.quote_id LIMIT 1) as image_url,
+        1 as user_favorited
+        FROM quotes q 
+        JOIN users u ON q.user_id = u.user_id
+        JOIN favorites f ON q.quote_id = f.quote_id
+        WHERE f.user_id = $user_id
+        ORDER BY f.date_favorited DESC";
     
     $result = $conn->query($sql);
     $quotes = [];

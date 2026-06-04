@@ -1,6 +1,8 @@
 // Quote Diary - Main JavaScript
 
 // Theme Toggle
+let themeBtn = null; // declare at top level
+
 function initTheme() {
     const theme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', theme);
@@ -17,7 +19,6 @@ function toggleTheme() {
 
 function updateThemeIcon() {
     if (!themeBtn) return;
-    
     const theme = document.documentElement.getAttribute('data-theme');
     themeBtn.textContent = theme === 'light' ? 'Dark Mode' : 'Light Mode';
 }
@@ -393,7 +394,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateThemeIcon();
     
     // Attach theme toggle
-    const themeBtn = document.querySelector('.theme-toggle');
+    themeBtn = document.querySelector('.theme-toggle');
     if (themeBtn) {
         themeBtn.addEventListener('click', toggleTheme);
     }
@@ -413,6 +414,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target === modal) {
                 modal.classList.remove('active');
             }
+        });
+    });
+
+    // Close mobile menu when a nav link is clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.querySelector('.nav-links')?.classList.remove('active');
         });
     });
 });
