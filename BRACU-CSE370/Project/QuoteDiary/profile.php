@@ -48,10 +48,10 @@ $stats = $stmt->get_result()->fetch_assoc();
     <div class="container" style="margin-top: 2rem;">
         <!-- Profile Header -->
         <div class="profile-header">
-            <img src="<?php echo htmlspecialchars($currentUser['profile_picture']); ?>" alt="Profile" class="profile-avatar">
+            <img src="<?php echo htmlspecialchars($currentUser['profile_picture'] ?? 'media/assets/default-avatar.png'); ?>" alt="Profile" class="profile-avatar">
             <h1><?php echo htmlspecialchars($currentUser['username']); ?></h1>
             <p style="color: var(--text-secondary);">
-                Member since <?php echo date('F Y', strtotime($currentUser['date_joined'])); ?>
+                Member since <?php echo date('F Y', strtotime($currentUser['date_joined'] ?? 'now')); ?>
             </p>
             <button class="btn btn-secondary mt-1" onclick="openModal('editProfileModal')">Edit Profile</button>
         </div>
@@ -74,8 +74,8 @@ $stats = $stmt->get_result()->fetch_assoc();
 
         <!-- Profile Tabs -->
         <div class="profile-tabs">
-            <button class="tab active" onclick="switchTab('my-quotes')">My Quotes</button>
-            <button class="tab" onclick="switchTab('favorites')">Favorites</button>
+            <button class="tab active" onclick="switchTab('my-quotes', this)">My Quotes</button>
+            <button class="tab" onclick="switchTab('favorites', this)">Favorites</button>
         </div>
 
         <!-- Tab Content -->
@@ -178,6 +178,8 @@ $stats = $stmt->get_result()->fetch_assoc();
         </div>
     </div>
 
+    <script src="app.js"></script>
+
     <script>
         window.currentUserId = <?php echo $currentUser['user_id']; ?>;
         
@@ -185,11 +187,9 @@ $stats = $stmt->get_result()->fetch_assoc();
         loadQuotes({ user_id: window.currentUserId });
         
         // Tab switching
-        function switchTab(tabName) {
-            // Update tab buttons
+        function switchTab(tabName, btn) {
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            event.target.classList.add('active');
-            
+            btn.classList.add('active');
             // Show/hide content
             document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
             document.getElementById(tabName).classList.remove('hidden');
@@ -325,6 +325,6 @@ $stats = $stmt->get_result()->fetch_assoc();
             }
         }
     </script>
-    <script src="app.js"></script>
+
 </body>
 </html>

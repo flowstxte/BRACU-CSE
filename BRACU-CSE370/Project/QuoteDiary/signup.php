@@ -49,19 +49,13 @@ if (isLoggedIn()) {
 
             <div class="form-group">
                 <label for="password">Password *</label>
-                <div class="input-with-action">
-                    <input type="password" id="password" name="password" class="form-control" required minlength="6">
-                    <button type="button" class="toggle-password" onclick="togglePassword('password', this)">Show</button>
-                </div>
+                <input type="password" id="password" name="password" class="form-control" required minlength="6">
                 <small style="color: var(--text-secondary);">Minimum 6 characters</small>
             </div>
 
             <div class="form-group">
                 <label for="confirm_password">Confirm Password *</label>
-                <div class="input-with-action">
-                    <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
-                    <button type="button" class="toggle-password" onclick="togglePassword('confirm_password', this)">Show</button>
-                </div>
+                <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
             </div>
 
             <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
@@ -91,6 +85,10 @@ if (isLoggedIn()) {
             const formData = new FormData(form);
             formData.append('action', 'signup');
             
+            const btn = form.querySelector('[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = 'Please wait...';
+
             try {
                 const response = await fetch('auth.php', {
                     method: 'POST',
@@ -104,20 +102,16 @@ if (isLoggedIn()) {
                         window.location.href = 'index.php';
                     }, 1500);
                 } else {
+                    btn.disabled = false;
+                    btn.textContent = 'Create Account';
                     showAlert(data.message, 'error');
                 }
             } catch (error) {
+                btn.disabled = false;
+                btn.textContent = 'Create Account';
                 console.error('Error:', error);
                 showAlert('Something went wrong. Please try again.', 'error');
             }
-        }
-
-        function togglePassword(id, btn) {
-            const input = document.getElementById(id);
-            if (!input) return;
-            const isHidden = input.type === 'password';
-            input.type = isHidden ? 'text' : 'password';
-            btn.textContent = isHidden ? 'Hide' : 'Show';
         }
 
         function showAlert(message, type = 'success') {

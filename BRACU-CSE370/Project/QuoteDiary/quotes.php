@@ -19,13 +19,15 @@ if ($action === 'get_quotes') {
     if (isLoggedIn()) {
         $current_user_id = $_SESSION['user_id'];
         $sql .= ", (SELECT COUNT(*) FROM likes WHERE quote_id = q.quote_id AND user_id = $current_user_id) as user_liked,
-                  (SELECT COUNT(*) FROM favorites WHERE quote_id = q.quote_id AND user_id = $current_user_id) as user_favorited";
+                (SELECT COUNT(*) FROM favorites WHERE quote_id = q.quote_id AND user_id = $current_user_id) as user_favorited";
+    } else {
+        $sql .= ", 0 as user_liked, 0 as user_favorited";
     }
     
     $sql .= " FROM quotes q JOIN users u ON q.user_id = u.user_id WHERE 1=1";
     
     if ($search) {
-        $sql .= " AND (q.quote_text LIKE '%$search%' OR q.author_name LIKE '%$search%' OR u.username LIKE '%$search%')";
+        $sql .= " AND (q.quote_text LIKE '%$search%' OR q.author_name LIKE '%$search%')";
     }
     
     if ($category) {
@@ -100,6 +102,17 @@ elseif ($action === 'create_quote') {
         
         // Handle image upload
         if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
+            if ($_FILES['image']['size'] > 5 * 1024 * 1024) {
+                echo json_encode(['success' => false, 'message' => 'Image must be under 5MB']);
+                exit();
+            }
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $mimeType = finfo_file($finfo, $_FILES['image']['tmp_name']);
+            $allowedMimes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
+            if (!in_array($mimeType, $allowedMimes)) {
+                echo json_encode(['success' => false, 'message' => 'Invalid file type']);
+                exit();
+            }
             $allowed = ['jpg', 'jpeg', 'png', 'gif'];
             $filename = $_FILES['image']['name'];
             $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
@@ -324,23 +337,6 @@ elseif ($action === 'get_favorites') {
     }
     
     echo json_encode(['success' => true, 'quotes' => $quotes]);
-}
-
-elseif ($action === 'get_quote_of_the_day') {
-    $sql = "SELECT q.*, u.username, u.profile_picture,
-            (SELECT COUNT(*) FROM likes WHERE quote_id = q.quote_id) as likes_count,
-            (SELECT COUNT(*) FROM comments WHERE quote_id = q.quote_id) as comments_count,
-            (SELECT media_url FROM media WHERE quote_id = q.quote_id LIMIT 1) as image_url
-            FROM quotes q
-            JOIN users u ON q.user_id = u.user_id
-            ORDER BY likes_count DESC, q.date_added DESC
-            LIMIT 1";
-    $result = $conn->query($sql);
-    if ($result && $result->num_rows > 0) {
-        echo json_encode(['success' => true, 'quote' => $result->fetch_assoc()]);
-    } else {
-        echo json_encode(['success' => true, 'quote' => null]);
-    }
 }
 
 else {

@@ -8,7 +8,7 @@ $currentUser = getCurrentUser();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quote Diary</title>
+    <title>Quote Diary - Share Your Thoughts</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -37,16 +37,11 @@ $currentUser = getCurrentUser();
     <!-- Main Content -->
     <div class="container" style="margin-top: 2rem;">
         <?php if ($currentUser): ?>
-            <!-- Quote of the Day Section -->
-            <div style="background: var(--gradient-1); padding: 2rem; border-radius: 25px; margin-bottom: 2rem;">
-                <h1 style="text-align:center;">Quote of the Day</h1>
-                <p style="text-align:center; color: var(--text-secondary);">Most liked</p>
-                <div id="quoteOfDayContainer" class="quotes-grid" style="margin-top: 1rem;">
-                    <div class="spinner"></div>
-                </div>
-                <div style="text-align:center; margin-top:1rem;">
-                    <button class="btn btn-primary" onclick="openCreateModal()">Create New Quote</button>
-                </div>
+            <!-- Welcome Section -->
+            <div style="background: var(--gradient-1); padding: 2rem; border-radius: 25px; margin-bottom: 2rem; text-align: center;">
+                <h1>Welcome back, <?php echo htmlspecialchars($currentUser['username']); ?>!</h1>
+                <p style="color: var(--text-secondary);">Share your thoughts and inspire others</p>
+                <button class="btn btn-primary mt-1" onclick="openCreateModal()">Create New Quote</button>
             </div>
         <?php else: ?>
             <!-- Hero Section for non-logged users -->
@@ -64,7 +59,7 @@ $currentUser = getCurrentUser();
 
         <!-- Search & Filter -->
         <div class="search-bar">
-            <input type="text" id="searchInput" class="form-control search-input" placeholder="Search quotes, authors, or usernames...">
+            <input type="text" id="searchInput" class="form-control search-input" placeholder="Search quotes or authors...">
             <select id="categoryFilter" class="filter-select">
                 <option value="">All Categories</option>
                 <option value="Motivation">Motivation</option>
@@ -148,7 +143,6 @@ $currentUser = getCurrentUser();
         
         // Load quotes on page load
         document.addEventListener('DOMContentLoaded', function() {
-            loadQuoteOfTheDay();
             loadQuotesOnHome();
         });
         
@@ -183,31 +177,6 @@ $currentUser = getCurrentUser();
                 .catch(error => {
                     console.error('Error loading quotes:', error);
                     container.innerHTML = '<p class="text-center">Error loading quotes</p>';
-                });
-        }
-        
-        // Load Quote of the Day
-        function loadQuoteOfTheDay() {
-            const container = document.getElementById('quoteOfDayContainer');
-            if (!container) return; // only present for logged-in users
-            container.innerHTML = '<div class="spinner"></div>';
-            
-            fetch('quotes.php?action=get_quote_of_the_day')
-                .then(response => response.json())
-                .then(data => {
-                    if (!data.success) {
-                        container.innerHTML = '<p class="text-center">Failed to load Quote of the Day</p>';
-                        return;
-                    }
-                    if (!data.quote) {
-                        container.innerHTML = '<p class="text-center">No quotes yet. Create one!</p>';
-                        return;
-                    }
-                    container.innerHTML = createQuoteCard(data.quote);
-                })
-                .catch(error => {
-                    console.error('Error loading Quote of the Day:', error);
-                    container.innerHTML = '<p class="text-center">Error loading Quote of the Day</p>';
                 });
         }
         

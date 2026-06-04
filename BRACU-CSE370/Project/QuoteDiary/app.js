@@ -16,10 +16,6 @@ function toggleTheme() {
 }
 
 function updateThemeIcon() {
-    const themeBtn = document.querySelector('.theme-toggle');
-    if (themeBtn) {
-        themeBtn.addEventListener('click', toggleTheme);
-    }
     if (!themeBtn) return;
     
     const theme = document.documentElement.getAttribute('data-theme');
@@ -110,7 +106,7 @@ function createQuoteCard(quote) {
             <div class="quote-text">${quote.quote_text}</div>
             
             <div class="quote-meta">
-                ${quote.author_name && quote.author_name !== 'self' ? `<span class="tag">By: ${quote.author_name}</span>` : ''}
+                ${quote.author_name && quote.author_name.toLowerCase() !== 'self' && quote.author_name.trim() !== '' ? `<span class="tag">By: ${quote.author_name}</span>` : ''}
                 ${quote.category ? `<span class="tag">${quote.category}</span>` : ''}
                 ${quote.mood ? `<span class="tag">${quote.mood}</span>` : ''}
             </div>
@@ -336,63 +332,6 @@ async function deleteQuote(quoteId) {
         }
     } catch (error) {
         console.error('Error deleting quote:', error);
-    }
-}
-
-// Edit Quote
-async function editQuote(quoteId) {
-    try {
-        const response = await fetch(`quotes.php?action=get_quote&quote_id=${quoteId}`);
-        const data = await response.json();
-
-        if (!data.success) {
-            showAlert('Failed to load quote', 'error');
-            return;
-        }
-
-        const quote = data.quote;
-
-        // Fill form with quote data
-        const editIdInput = document.getElementById('editQuoteId');
-        const quoteTextInput = document.getElementById('quoteText');
-        const authorNameInput = document.getElementById('authorName');
-        const categorySelect = document.getElementById('category');
-        const moodSelect = document.getElementById('mood');
-        const modalTitle = document.getElementById('modalTitle');
-        const submitBtn = document.getElementById('submitBtn');
-        const imagePreview = document.getElementById('createImagePreview');
-
-        if (!editIdInput || !quoteTextInput || !modalTitle || !submitBtn) {
-            console.error('Edit form elements not found');
-            showAlert('Edit form not available', 'error');
-            return;
-        }
-
-        editIdInput.value = quote.quote_id;
-        quoteTextInput.value = quote.quote_text || '';
-        if (authorNameInput) authorNameInput.value = quote.author_name || '';
-        if (categorySelect) categorySelect.value = quote.category || '';
-        if (moodSelect) moodSelect.value = quote.mood || '';
-
-        // Update modal title and button text
-        modalTitle.textContent = 'Edit Quote';
-        submitBtn.textContent = 'Update Quote';
-
-        // Show existing image if available
-        if (imagePreview) {
-            if (quote.image_url) {
-                imagePreview.src = quote.image_url;
-                imagePreview.style.display = 'block';
-            } else {
-                imagePreview.style.display = 'none';
-            }
-        }
-
-        // Open the modal
-        openModal('createQuoteModal');
-    } catch (error) {
-        console.error('Error loading quote for edit:', error);
-        showAlert('Something went wrong', 'error');
     }
 }
 

@@ -114,6 +114,17 @@ elseif ($action === 'update_profile') {
     // Handle profile picture upload
     $profile_picture = null;
     if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === 0) {
+            if ($_FILES['profile_picture']['size'] > 5 * 1024 * 1024) {
+            echo json_encode(['success' => false, 'message' => 'Image must be under 5MB']);
+            exit();
+        }
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mimeType = finfo_file($finfo, $_FILES['profile_picture']['tmp_name']);
+        $allowedMimes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
+        if (!in_array($mimeType, $allowedMimes)) {
+            echo json_encode(['success' => false, 'message' => 'Invalid file type']);
+            exit();
+        }
         $allowed = ['jpg', 'jpeg', 'png', 'gif'];
         $filename = $_FILES['profile_picture']['name'];
         $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
