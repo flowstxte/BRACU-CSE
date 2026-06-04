@@ -39,7 +39,7 @@ $currentUser = getCurrentUser();
         <!-- Quote of the Day Section -->
         <div id="qotdSection" style="margin-bottom: 2rem;">
             <div style="text-align:center; padding: 1rem 0 0.5rem;">
-                <span style="background: var(--accent-primary); color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">✨ Quote of the Day</span>
+                <span style="background: var(--accent-primary); color: white; padding: 0.3rem 1.2rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Quote of the Day</span>
             </div>
             <div id="qotdCard" style="background: var(--gradient-1); border-radius: 30px; padding: 2.5rem 2rem; margin-top: 0.75rem; position: relative; overflow: hidden;">
                 <!-- Decorative large quote mark -->
