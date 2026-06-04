@@ -7,8 +7,8 @@ $action = isset($_POST['action']) ? $_POST['action'] : '';
 
 // Signup
 if ($action === 'signup') {
-    $username = sanitize($_POST['username']);
-    $email = sanitize($_POST['email']);
+    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
     
@@ -64,7 +64,7 @@ if ($action === 'signup') {
 
 // Login
 elseif ($action === 'login') {
-    $username = sanitize($_POST['username']);
+    $username = trim($_POST['username']);
     $password = $_POST['password'];
     
     if (empty($username) || empty($password)) {
@@ -109,7 +109,7 @@ elseif ($action === 'update_profile') {
     }
     
     $user_id = $_SESSION['user_id'];
-    $email = sanitize($_POST['email']);
+    $email = trim($_POST['email']);
     
     // Handle profile picture upload
     $profile_picture = null;

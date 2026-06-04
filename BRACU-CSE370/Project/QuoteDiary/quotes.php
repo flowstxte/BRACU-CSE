@@ -83,10 +83,10 @@ elseif ($action === 'create_quote') {
     }
     
     $user_id = $_SESSION['user_id'];
-    $quote_text = sanitize($_POST['quote_text']);
-    $author_name = isset($_POST['author_name']) ? sanitize($_POST['author_name']) : 'self';
-    $category = isset($_POST['category']) ? sanitize($_POST['category']) : '';
-    $mood = isset($_POST['mood']) ? sanitize($_POST['mood']) : '';
+    $quote_text = trim($_POST['quote_text']);
+    $author_name = isset($_POST['author_name']) ? trim($_POST['author_name']) : 'self';
+    $category = isset($_POST['category']) ? trim($_POST['category']) : '';
+    $mood = isset($_POST['mood']) ? trim($_POST['mood']) : '';
     
     if (empty($quote_text)) {
         echo json_encode(['success' => false, 'message' => 'Quote text is required']);
@@ -150,10 +150,10 @@ elseif ($action === 'update_quote') {
     
     $quote_id = intval($_POST['quote_id']);
     $user_id = $_SESSION['user_id'];
-    $quote_text = sanitize($_POST['quote_text']);
-    $author_name = sanitize($_POST['author_name']);
-    $category = sanitize($_POST['category']);
-    $mood = sanitize($_POST['mood']);
+    $quote_text = trim($_POST['quote_text']);
+    $author_name = trim($_POST['author_name']);
+    $category = trim($_POST['category']);
+    $mood = trim($_POST['mood']);
     
     // Check ownership
     $stmt = $conn->prepare("SELECT user_id FROM quotes WHERE quote_id = ?");
@@ -300,7 +300,7 @@ elseif ($action === 'add_comment') {
     
     $quote_id = intval($_POST['quote_id']);
     $user_id = $_SESSION['user_id'];
-    $comment_text = sanitize($_POST['comment_text']);
+    $comment_text = trim($_POST['comment_text']);
     
     if (empty($comment_text)) {
         echo json_encode(['success' => false, 'message' => 'Comment cannot be empty']);
