@@ -34,12 +34,10 @@ function showAlert(message, type = 'success') {
     const alertDiv = document.createElement('div');
     alertDiv.className = `alert alert-${type}`;
     alertDiv.textContent = message;
-    
-    const container = document.querySelector('.container');
-    if (container) {
-        container.insertBefore(alertDiv, container.firstChild);
-        setTimeout(() => alertDiv.remove(), 3000);
-    }
+    alertDiv.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;min-width:300px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.2);';
+
+    document.body.appendChild(alertDiv);
+    setTimeout(() => alertDiv.remove(), 4000);
 }
 
 // Format Date

@@ -25,8 +25,13 @@ date_default_timezone_set('Asia/Dhaka');
 // Helper function to sanitize input
 function sanitize($data) {
     global $conn;
+    // Strip magic_quotes slashes if PHP magic_quotes_gpc is on (old XAMPP)
+    if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc()) {
+        $data = stripslashes($data);
+    }
     return $conn->real_escape_string(trim($data));
 }
+
 function sanitizeHTML($data) {
     return htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
 }

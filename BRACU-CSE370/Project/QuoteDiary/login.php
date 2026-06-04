@@ -95,10 +95,8 @@ if (isLoggedIn()) {
             const alertDiv = document.createElement('div');
             alertDiv.className = `alert alert-${type}`;
             alertDiv.textContent = message;
-            
-            const form = document.getElementById('loginForm');
-            form.parentElement.insertBefore(alertDiv, form);
-            
+            alertDiv.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;min-width:300px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.2);';
+            document.body.appendChild(alertDiv);
             setTimeout(() => alertDiv.remove(), 4000);
         }
     </script>
