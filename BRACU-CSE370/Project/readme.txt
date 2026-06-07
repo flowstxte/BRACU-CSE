@@ -1,6 +1,6 @@
 Quote Diary 
 [Updated this project, and made a real site for sharing community quotes called "Quoted".
-Give a tour: https://bank-app-prototype.vercel.app/ ]
+Give a tour: https://quoted-new.vercel.app/ ]
 
 A simple and interactive web app where users can post, save, and browse motivational or personal quotes. It allows users to express thoughts, view others’ quotes, and build a personal collection.
 
