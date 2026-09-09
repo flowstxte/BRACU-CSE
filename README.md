@@ -19,9 +19,11 @@ The repository is systematically organized by course. Below are the official tit
 - **CSE421: Computer Networks** (`BRACU-CSE421`)
 - **CSE422: Artificial Intelligence** (`BRACU-CSE422`)
 - **CSE423: Computer Graphics** (`BRACU-CSE423`)
+- **CSE470: Software Engineering** (`BRACU-CSE470`)
 
 **Electives:**
 
+- **CSE437: Data Science** (`BRACU-CSE437`)
 - **CSE443: Bioinformatics I** (`BRACU-CSE443`)
 
 ## About
