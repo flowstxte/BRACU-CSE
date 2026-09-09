@@ -56,5 +56,4 @@ For complete documentation covering the 20 core features, priority matrix, opera
 
 For proprietary and security reasons, the private production codebase and commercial credentials are not published in this public academic repository.
 
-To explore the live application in action, visit:  
-[https://glasse.vercel.app/](https://glasse.vercel.app/)
+To explore the live application in action, visit: [https://glasse.vercel.app](https://glasse.vercel.app/)
