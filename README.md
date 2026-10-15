@@ -23,6 +23,7 @@ The repository is systematically organized by course. Below are the official tit
 
 **Electives:**
 
+- **CSE428: Image Processing** (`BRACU-CSE428`)
 - **CSE437: Data Science** (`BRACU-CSE437`)
 - **CSE443: Bioinformatics I** (`BRACU-CSE443`)
 
